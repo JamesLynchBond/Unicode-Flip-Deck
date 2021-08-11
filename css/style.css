@@ -1,0 +1,812 @@
+/*
+
+	Author:		James Marion Lynch, CEO
+    Corp:       JML_3D_Studios
+	Date:		02-02-2021
+	Version:	Alpha 1.0.0.0
+	Title:		Cascading Style Sheet
+	Filename:	css/style.css
+	Language:	CSS3
+    
+    Other languages used are: HTML5, JavaScript (ECMAScript = ES7 2017),
+    WebGL, a sub-set of OpenGL, GLSL (Graphics Language Shader Language).
+    There is one page which uses jquery.js in audio-player.js.
+
+*/
+
+html{ 
+	font-size: 1vh;
+}
+
+/*
+
+    The background is of the ocean @sunset, with storm clouds.
+    A skull & Corporation name embedded with Microsoft 3D Paint.
+    
+*/
+body
+{
+	background: url(../img/Slides/slide1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+	border: none;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 1.2vh;
+	overflow: hidden;
+	line-height: normal;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/* The 10x10 blue square png image in front of playlist li	*/
+ul#playlist li{
+	list-style-image: url(../img/li-img.png);
+	margin-left: 3vh;
+    font-size: 2vh;
+    font-family: 'Courier New', monospace;
+    line-height: 1.4;
+    font-weight: normal;
+}
+
+#audio-player, #log_div{
+	background-color: white;
+	border-radius: 5vw;
+	box-sizing: border-box;
+	border: .3vh solid purple;
+	color: black;
+	display: inline-block;
+    font-family: 'Courier New', monospace;
+	font-size: 1vh;
+	font-weight: normal;
+	height:  10vh;			
+	width:   10vh;				
+	margin:  1vh;
+	padding: 0;
+	position: fixed;
+	bottom:  0;
+	right:   0;
+	opacity: .8;
+	outline: 0 !important;
+	overflow-y: scroll;
+	text-decoration: none;
+	transition-property: height, width, padding, border, font-size, font-weight;
+	transition-delay:    0s,     3s,    6s,       10s,     15s,        21s;
+	transition-duration: 3s,     3s,    4s,        5s,      6s,         7s;
+	z-index: 100;	
+}
+
+#audio-player:hover, #log_div:hover {
+    animation: opacity.2To1 20s infinite;
+    animation-iteration-count: 1;
+    animation-delay: 0s;
+}
+
+@keyframes opacity.2To1 {
+    from {
+        opacity: .2;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/*  
+	Prevents audio-player & log_div elements from having scrollbars, scrolls with mouse wheel.
+*/
+#audio-player::-webkit-scrollbar, #log_div::-webkit-scrollbar{
+	display: none;
+}
+#audio-player, #log_div{
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+#audio-player:hover, #log_div:hover{
+	border: 1vh solid purple;
+	-moz-box-shadow:    inset 1.2vh 2.1vh 2.4vh 3.3vh gray;
+	-webkit-box-shadow: inset 1.2vh 2.1vh 2.4vh 3.3vh gray;
+	box-shadow: 		inset 1.2vh 2.1vh 2.4vh 3.3vh gray;
+    font-family: 'Brush Script MT', cursive; 
+	font-size: 3vh;
+	font-weight: bold;
+	opacity: 1;
+	padding: 3vh;
+	height: 90%; 
+	width:  30%;
+	z-index: 1000000;
+}
+
+
+/*
+	On mouse hover over the Audio Player element,
+	the clock transforms attributes height, width, font-size, opacity, z-index; 
+*/
+#audio-player:hover #clock{
+	font-size: 2.5vh;
+	margin-top: .5vh;
+	margin-bottom: 1.2vh;
+	z-index: 100000;
+}
+
+
+/*	
+	The log_div element must have a higher z-index value than the audio_player element.
+	This allows both elements to share the same CSS3 and div space.
+	The View? button allows you to open the log_div, which is a history
+	of your game play and web page JavaScript / HTML5 & CSS3 program events.
+	After you press the button nothing happens until you hover in the lower right hand corner,
+	over the 2-inc diameter circular element, showing company name and clock.
+	Both the log_div & audio_player elements go from a circle to 12-inch x 8 inch rectangles. 
+	The width, height, font-size, font-weight, opacity, changed synchronized in harmony in
+	unfolding of the elements to their full actual size. It waits till the end to display the
+	cover of music albumns artwork. You watch it shade the inside to appear to be 3D as if it is rising out of the screen.
+	Then the padding is added which moves the photo with curved top corners. 
+	My company name and clock are above the photo in blue smokey shadow effects. 
+	After it is opacity: 1;, You can scroll down the audio-player to the hidden playlist and controls.
+	It has a playlist of 9 songs showing you the title, artist, clock counting the seconds of play, 
+	4 buttons, play and pause occupy the same button element.
+	
+	
+
+*/
+
+
+
+#log_div{
+	z-index: 1000; 	
+}
+
+/*
+	Below is our Audio Player menu bar for our buttons.
+
+*/
+#audio_bar{
+	background-color: transparent;
+	position: relative;
+	margin-left: 3vh;
+	width: 90%;
+}
+
+.resizable{
+	background-color: transparent;
+	border-radius: 2vh;
+	top: 8vh;
+	left: 0;
+	max-width: 85%;
+	max-height: 80%;
+	min-width: 0;
+	min-height: 0;
+	width: 30%;
+	height: 30%;
+	resize: both;
+	margin: 1vh;
+	overflow: hidden;
+	outline: 0 !important;
+	padding: 0;
+	position: fixed;
+	z-index: 100000;
+}
+
+/*   This is relative to the parent container class above.  */
+#video_element{
+	background-color: black;
+	border-radius: 2vh;
+	border: 1vh solid purple;
+	box-sizing: border-box;
+	color: white;
+	opacity: .5;
+	overflow: hidden;
+	outline: 0 !important;
+    position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+    z-index: 100001;
+}
+ 
+
+#title_bar{
+	background-color: transparent;
+	color: yellow;
+	font-size: 2vh;
+	font-weight: normal;
+	line-height: 1.2;
+	text-align: left;
+	margin: 1vh;
+	opacity: .85;
+	outline: 0 !important;
+	overflow-y: scroll;
+	padding: .5vh;
+	position: absolute;
+	top: 8vh;
+	left: 0;
+	width: 70%;
+	height: 10vh;
+	transition-property: width, height, font-size, font-weight, opacity;	
+	transition-delay: .5s;
+	transition-duration: 1s;
+	z-index: 10;	
+}
+
+/*  
+	Prevents browser from adding scrollbars to element, allows scroll with mouse wheel.
+*/
+#title_bar::-webkit-scrollbar{ display: none; }
+#title_bar{ -ms-overflow-style: none; scrollbar-width: none; }
+
+/*  
+	Handles the transition special effects on mouse hover event.
+	I am saying, increase the font-size from 2 to 5, make it bold, 
+	and width = 100%, height: auto, element grows upon tap or
+	click event, if the user needs to be able to see the element
+	on a small screen (cell phone or tablet device).
+	I tested this program on my 43 inch TV HDMI-ed to my laptop.
+	I tested it on my Samsung S10e cell phnoe with a small screen.
+	
+	*************************************************************
+	
+	The z-index below allows the title_bar text to show through all elements.
+*/
+
+#title_bar:hover{
+	width: 100%;
+	height: auto;
+	font-size: 5vh;
+	font-weight: bold;
+	z-index: 100000;
+}
+
+#menu_bar{
+	top: 1vh;
+}
+
+#task_bar{
+	bottom: 1vh;
+}
+
+/* 
+	The media art albumn cover image container element.
+*/
+
+#audio-image{
+	background-color: transparent;
+	border-top-right-radius: 2vw;
+    border-top-left-radius: 2vw;
+	color: black;
+	height: 100%;
+    margin-bottom: 10vh;
+	opacity: 0;
+	outline: 0 !important;
+	overflow-y: scroll;
+	position: relative;
+	text-decoration: none;
+	transition-property: opacity;
+	transition-delay: 1s;
+	transition-duration: 2s;
+	z-index: 1001;	
+}
+
+/*  Prevents scrollbars, scrolls with mouse wheel.  */
+#audio-image::-webkit-scrollbar{
+	display: none;
+}
+
+/*  Prevents scrollbars, scrolls with mouse wheel.  */
+#audio-image{
+	-ms-overflow-style: none;
+	scrollbar-width: 	none;
+}
+
+#audio-image .cover{
+	border-top-right-radius: 2vw;
+    border-top-left-radius:  2vw;
+	width: 100%;
+}
+
+#audio-image:hover{
+	opacity: 1;
+}
+
+#audio_volume{
+	margin-left: 3vh;
+	width: 90%;
+	z-index: 1100;
+}
+
+.slider{
+	appearance: none;
+	background-color: #757575;	/* sonic silver.  */
+	border: .08vh solid black;
+	border-radius: .1vh;	
+	cursor: pointer;
+	height: .2vh;
+	margin-left: auto;
+	margin-right: auto;
+	outline: 0 !important;
+	overflow: visible;
+	width: 70%;
+	z-index: 1100;
+}
+
+/*  For the slider bar controls, (Mozilla browsers.)  */
+.slider::-moz-range-thumb{
+	appearance: none;
+	background-color: red;
+	border-radius: .3vh;
+	color: white;
+	cursor: pointer;
+	height: 2vh;
+	width: .6vh;
+	z-index: 1101;
+}
+
+/*  For the slider bar controls, (Apple's Safari browsers.) */
+.slider::-webkit-slider-thumb{
+	appearance: none;
+	background-color: red;
+	border: none;
+	border-radius: .3vh;
+	color: white;
+	cursor: pointer;
+	height: 2vh;
+	-webkit-appearance: none;
+	width: .6vh;
+	z-index: 1101;
+}
+
+#playlist{
+	cursor: pointer;
+	list-style: none;
+	width: 100%;
+	z-index: 1011;
+}
+
+#playlist li{
+	background-color: transparent; 
+	border: none;
+	color: black;
+	cursor: pointer;
+	line-height: 1.2;
+	font-size: 1.2vh;
+	font-weight: bold;
+	outline: 0 !important;
+    z-index: 1012;
+}
+
+#audio-info, #audio_title, #clock, #duration, #playlist li.active{
+	background-color: transparent;
+	color: purple;
+	cursor: pointer;
+	font-size: 2.2vh;
+	font-weight: bold;
+	height: 2.2vh;
+	left: 0;
+	margin: .8vh;
+	outline: 0 !important;
+	padding: .6vh;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1vh 1vh 2vh blue;
+	top: 0;
+	width: 100%;
+	z-index: 1013;
+}
+
+#audio_info, #audio_title{
+	margin-bottom: 2.2vh;
+}
+
+#playlist li.active{
+    list-style-image: url(../img/li-img-RedSq.jpg);
+	margin-left: 3.5vh;
+}
+
+#clock{
+	font-size: 1.2vh;
+	font-weight: bold;
+	height: auto;
+	opacity: 1;
+	margin-top: 1vh;
+	margin-right: 0;
+	margin-bottom: 1vh;
+	margin-left: 0;
+}
+
+#tracker{
+    position: relative;
+    width: 100%;
+	height: auto;
+	margin: 1vh;
+	padding: 1vh;
+}
+
+/*
+	The padding in class menus allows room for a buttons shadow effects.
+	The buttons also appear to move when clicked with a mouse.
+	Buttons must appear rather large on large screens.
+	Otherwise they are too small for small cell phones screens.
+	I am making a compromise and will not use @media commands, slows down the code.
+	Also complicates the code when a compromise is best.
+	
+    This program will not resize when a browser window is changed.
+    By using box-sizing: border-box; The element does not grow due to margin or padding.
+    I am using vh = viewport height & vw = viewport width sizes, so browser cannot grow or shrink page elements.
+    Calculations on size are based as a percentage of screen size.
+*/
+.menus{
+	box-sizing: border-box;
+	display: inline-block;
+	height: 8vh;
+	margin: 0;
+	overflow: hidden;
+	padding: .7vh;
+	position: fixed;
+	left: 0;
+	text-align: center;
+	width: 80%;
+	z-index: 10;
+}
+
+button, select{
+	background-color: white;
+	color: black;
+	border: .25vh solid purple;
+	border-radius: 2vh;							/*  Half the size of the height gives rounded buttons.  */
+	-moz-box-shadow: 	.7vh .8vh 1vh black;	
+	-webkit-box-shadow: .7vh .8vh 1vh black;	
+	box-shadow: 		.7vh .8vh 1vh black;
+	box-sizing: border-box;						/*  All margins & padding are part of the width & height. */
+	cursor: pointer;
+	display: inline-block;
+	float: left;
+	font-size: 1.6vh;
+	font-weight: normal;
+	height: 4vh;
+	width: 8.5vh;
+	margin: 0 .5vh 0 .5vh;						
+	opacity: .9;
+	outline:  0 !important;
+	overflow: hidden;
+	padding:  0;										
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	transition: opacity 1s;
+	z-index: 10000;
+}
+
+/*  
+	The buttons 0 .5vh = .6vh shadow which disappears matching the length of shadow.
+	The button moves down the y-axis when clicked, see transform: translateY(.6vh);  
+*/
+button:active, select:active{
+	-moz-box-shadow: 	0 .5vh black;	
+	-webkit-box-shadow: 0 .5vh black;	
+	box-shadow: 		0 .5vh black;
+	transform: translateY(.6vh);
+}
+
+button:disabled, button[disabled], select:disabled, select[disabled]{
+    background-color: purple;
+    border: .1vh solid black;
+    color: white;
+    font-weight: normal;
+    cursor: not-allowed;
+    opacity: .075;
+}
+
+button:hover, select:hover{
+	border: .5vh solid blue;
+	background-color: white;
+	font-weight: bold;
+	color: black;
+	opacity: 1;
+}
+
+.clearboth{ clear: both; }
+.center{ text-align: center; }
+
+.flex-container{
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+/* Valid position values are absolute, fixed, relative, static, sticky.  */
+.flex-container > div{
+	margin: .8vh;
+	text-align: center;
+	position: sticky;
+}
+
+.center-x{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center-y{
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.card-outer{
+	position: relative;
+   	box-sizing: border-box;
+	top: 0;
+	left: 0;
+	width: 9vh;
+	height: 13vh;
+	perspective: 100vh;
+	z-index: 4000;
+}
+
+.card, .card-red{
+	background-color: white;
+	-webkit-box-shadow: 10px 10px 10px gray;    
+ 	-moz-box-shadow:    10px 10px 10px gray;   
+	box-shadow:         10px 10px 10px gray;
+	border: .25vh solid purple;
+	border-radius: 1vh;
+   	box-sizing: border-box;
+	color: black;
+	font-size: 12vh;
+	font-weight: normal;
+	display: inline-block;
+	width: 9vh;
+	height: 13vh;
+    line-height: 100%;
+	margin: 1vh;
+	opacity: 1;
+    overflow: hidden;
+    padding: .1vh;
+	position: relative;
+	top: 0;
+	left: 0;
+	text-align: center;
+	text-decoration: none;
+	z-index: 900000000;
+}
+
+.card-red{
+	color: red;
+}
+
+.card-inner{
+	position: relative;
+   	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	transition: transform 2s;
+	transform-style: preserve-3d;
+	z-index: 900000;
+}
+
+.card-outer:hover .card-inner{
+	transform: rotateY(180deg);
+}
+
+.card-front, .card-back{
+	position: fixed;
+   	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	z-index: 900000;
+}
+
+.card-back{
+	background-color: white;
+	color: blue;
+	transform: rotateY(180deg);
+	z-index: 900000;
+}
+
+.card_table{
+    display: inline-block;
+	margin: 1vh;
+	padding: 1vh;
+	position: absolute;
+	z-index: 10;
+	overflow-y: scroll;
+}
+
+.card_table::-webkit-scrollbar{
+	display: none;
+}
+
+.card_table{ 
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+#card_table_player{
+	top: 20vh;
+	left: 0;
+	height: auto;
+	width: 50%;
+}
+
+#card_table_dealer{
+	top: 20vh;
+	left: 50%;
+	height: auto;
+	width: 50%;
+}
+
+#card_table_player_split_hand{
+	top: 44vh;
+	left: 0;
+	height: auto;	
+	width: 50%;
+}
+
+#card_table_fullscreen{
+	top: 9vh;
+	left: 0;
+	height: auto;
+	width: 82%;
+}
+
+#editor_content{
+	background-color: white;
+	-moz-box-shadow:    inset 1.4vh 1.4vh 1.4vh 1.6vh gray;
+	-webkit-box-shadow: inset 1.4vh 1.4vh 1.4vh 1.6vh gray;
+	box-shadow: 		inset 1.4vh 1.4vh 1.4vh 1.6vh gray;
+	border: .6vh solid purple;
+	border-radius: 2vh;
+	box-sizing: border-box;
+	color: black;
+	font-weight: normal;
+	font-size: 1.3vh;
+	font-weight: normal;
+	line-height: 1.3;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	overflow-y: scroll;
+	outline: 0 !important;
+	padding: 2vh;
+	position: relative;
+	top: 0;
+	left: 0;
+	text-align: left;
+	text-decoration: none;
+	text-shadow: .5vh .5vh 1vh blue;
+	word-wrap: break-word;
+	z-index: 100;
+}
+
+/*  Prevents scrollbars, scrolls with mouse wheel.  */
+#editor_content::-webkit-scrollbar{
+	display: none;
+}
+
+/*  Prevents scrollbars, scrolls with mouse wheel.  */
+#editor_content{ 
+	-ms-overflow-style: none; 
+	scrollbar-width: none; 
+}
+
+canvas{
+    position: fixed;
+	z-index: 10;
+}
+
+#JML_canvas{
+	background-color: transparent;
+	color: transparent;
+	top: 0;
+	right: 0;
+	width: 13vh;
+	height: 13vh;
+}
+
+#chessboard{
+	background-color: white;
+	border-radius: 1vh;
+	-moz-box-shadow:    inset 1.4vh 1.4vh 1.4vh 1.6vh gray;
+	-webkit-box-shadow: inset 1.4vh 1.4vh 1.4vh 1.6vh gray;
+	box-shadow: 		inset 1.4vh 1.4vh 1.4vh 1.6vh gray;
+	border: 1vh solid blue;
+	color: black;
+	text-shadow: .5vh .5vh 1vh blue;
+	text-align: center;
+	font-weight: normal;
+    margin: 2vh;
+    padding: 3vh;
+}
+
+footer{
+	background-color: white;
+	color: black;
+	border: .6vh solid purple;
+	border-radius: .8vh;
+	-moz-box-shadow:    inset 1.4vh 1.4vh 1.4vh 1.6vh gray;
+	-webkit-box-shadow: inset 1.4vh 1.4vh 1.4vh 1.6vh gray;
+	box-shadow: 		inset 1.4vh 1.4vh 1.4vh 1.6vh gray;
+	text-align: left;
+	text-decoration: none;
+	font-size: 1.2vh;
+	font-weight: bold;
+	height: 1.6vh;
+	width: auto;
+	margin: 0;
+	opacity: 1;
+	outline: 0 !important;
+	overflow: hidden;
+	padding: 1vw;
+	position: fixed;
+	bottom: 2vh;
+	right: 35%;
+	z-index: 200;
+}
+
+
+.mySlides{
+	background: center fixed;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	align-content: center;
+	display: none;
+	width: 100%;
+}
+
+.w3-display-container{ position:relative; }
+.w3-display-container:hover{ display:block; }
+.responsive{ width: 100%; height: auto; }
+
+#displayProgress{
+	background-color: transparent;
+	border: none;
+	color: white;
+	font-size: 2.2vh;
+	font-weight: bold;
+	text-shadow: .5vh .5vh 1vh blue;
+	top: 38%;
+	left: 40%;
+	position: fixed;
+	height: 2.6vh;
+	width: auto;
+	outline: 0 !important;
+	z-index: 2000;
+}
+
+/*  Container div for myBar.  */
+#myProgress{
+	background-color: gray;
+	color: yellow;
+	border: .2vh solid black;
+	box-shadow: .6vh .8vh black;
+	height: 2.4vh;
+	padding: .2vh;
+	width: 40%;
+	outline: 0 !important;
+	top: 48%;
+	left: 30%;
+	position: absolute;
+	z-index: 2000;
+}
+
+#myBar{
+	background-color: limegreen;
+	border: none;
+	outline: 0 !important;
+	color: white;
+	width: 0;
+	height: 2.4vh;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 2000;
+}
+
+/* eof  */

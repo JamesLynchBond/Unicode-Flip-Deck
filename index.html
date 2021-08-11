@@ -1,0 +1,587 @@
+h<!DOCTYPE html>
+
+<!--
+
+	Author:		 		James Marion Lynch.		
+	Date:	        	12-15-2020. updated 08-11-2021 bj jim
+	Version:	        Alpha 1.0.0.0.
+	Title:		        Deck of Unicode flippable Playing Cards.		
+	Filename:	        index.html
+	Languages:			HTML5, CSS3.
+
+	Dependencies:
+	Filenames:
+	
+	index.html			(HTML5)	Hyper Text Markup Language version 5.0.
+	css/normalize.css	Cascading Style Sheets (generic reset from w3schools.com).
+	css/style.css		Cascading Style Sheets (specific page theme & styles used).
+	js/jquery.min.js	The jquery library for Audio Player Plug-in.
+	js/math.js			3D Graphics Libray ES5+ class keyword, Vec3, Vec4, Mat4, Quat, Camera.
+	js/utils.js			A helper Library
+	
+	Notes: Uses the card, card-red, card-outer, card-inner, section of CSS3
+	
+	css/normalize.css from w3schools.com
+	
+*********************************************
+
+	All cards on this web page are Unicode Playing Cards and only require 2 bytes each! No images are used!
+	
+	Flippable cards with CSS3
+	The CSS3 class .card is black by default.
+	The CSS3 class .card-red class is color: red.
+	
+	See file css/style.css CSS3 classes used, card-outer, card-inner, card, card-red, card-front, card-back.
+	The extra card classes are all needed to perform card flipping tricks in CSS3.
+	
+	Note: There is a JavaScript class Card() definition file, Blackjack.js, 
+	using Unicode Playing Cards to save 52 cards images x 50k each versus Unicode is 4 bytes per?
+	
+	*******************************************
+
+	A jquery new Audio() element is setup with jquery and a playlist.
+	There is a clock and video player.
+
+-->
+
+
+<html lang="en-US">
+
+<!-- 
+
+	The '<head>' item below is the opening tag for the head element.
+	All elements between opening & closing tags are children of the parent enclosing tag element.
+
+	Definition and Usage: (From w3schools.com)
+	The <meta> tag defines metadata about an HTML document. Metadata is data (information) about data.
+
+	<meta> tags always go inside the <head> element, and are typically used to specify character set, 
+	page description, keywords, author of the document, and viewport settings.
+
+	Metadata will not be displayed on the page, but is machine parsable.
+
+	Metadata is used by browsers (how to display content or reload page), search engines (keywords), and other web services.
+
+	There is a method to let web designers take control over the viewport (the user's visible area of a web page), 
+	through the <meta> tag (See "Setting The Viewport").
+
+	ceo = chief executive officer
+	cfo = chief financial officer
+	coo = chief operating officer
+	cto = chief technical officer 
+
+-->
+
+	<head>
+
+        <meta content="text/html;  charset=utf-8" http-equiv="Content-Type" />
+        <meta name="viewport"    	content="width=device-width, initial-scale=1" />
+		<meta name="author"      	content="James Marion Lynch (Jim)" />
+		<meta name="business-name"  content="JML-3D-Studios" />
+ 		<meta name="business-type"  content="sole proprietor" />
+		<meta name="ceo"      	 	content="James Marion Lynch" />
+        <meta name="cfo"      	 	content="James Marion Lynch" />
+        <meta name="coo"      	 	content="James Marion Lynch" />
+        <meta name="cto"      	 	content="James Marion Lynch" />
+        <meta name="description" 	content="Flippable Unicode Playing Cards." />
+		<meta name="founder"     	content="James Marion Lynch" />
+        <meta name="keywords"    	content="CSS3, HTML5, ecmascript" />
+		
+		<!-- Link external Cascading Style Sheets to page. -->
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/style.css" />  
+		
+       	<!-- Load external JavaScript programs.  -->
+		<script type="text/ecmascript" src="js/jquery.min.js"></script>
+        <script type="text/ecmascript" src="js/math.js"></script>
+        <script type="text/ecmascript" src="js/utils.js"></script>
+		
+		<!-- The title that appears in the tab of browser. -->
+		<title>Hover over card to see the back.</title>
+
+	<!-- The closing tag for the head element. -->
+    </head>
+	
+	<!-- The opening tag for the body element of this page & which JS function to execute when page loads.  -->
+    <body onload="setupWebGL();">
+
+		<!-- Each suit has its own flex-container div element.  -->
+		<div class="flex-container">
+
+			<!-- clubs, black. -->
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127185;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127186;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127187;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127188;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127189;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127190;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127191;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127192;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127193;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127194;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127195;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127197;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127198;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+		</div>
+			
+		<div class="flex-container">
+			
+			<!-- diamonds, red. -->
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127169;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127170;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127171;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>\
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127172;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127173;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127174;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127175;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127176;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127177;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127178;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127179;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127181;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127182;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+		</div>
+			
+		<div class="flex-container">
+			
+			<!-- hearts, red. -->
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127153;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127154;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127155;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127156;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127157;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127158;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127159;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127160;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127161;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127162;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127163;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127165;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127166;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+		</div>
+			
+		<div class="flex-container">
+			
+			<!-- spades, black. -->
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127137;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127138;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127139;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127140;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127141;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127142;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127143;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127144;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127145;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127146;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127147;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127149;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127150;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card-red">&#127167;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			<div class="card-outer">
+				<div class="card-inner">
+					<div class="card-front card">&#127199;</div>
+					<div class="card-back  card">&#127136;</div>
+				</div>
+			</div>
+			
+		<!-- End of playing cards area.   -->
+		</div>
+			
+	
+
+		<!-- The lower task_bar menu button container element. -->
+		<div id="task_bar" class="menus">
+            <button type="button" id="cmd_slide_left"  onclick="plusDivs(-1)" title="Slide show left?">&#10094;</button>  
+			<button type="button" id="cmd_slide_right" onclick="plusDivs(1)"  title="Slide show right?">&#10095;</button>  
+			<button type="button"   id="cmd_opacity_btn" title="Slider changes opacity of video?">
+				<input type="range" id="cmd_opacity" class="slider" min="1"  max="20" onchange="cmdOpacity()" value="5"/>
+			</button>
+			<button type="button" id="cmd_toggle_vid"  onclick="cmdToggleVid();"  title="Play Pause Video">Video?</button>
+			<button type="button" id="cmd_full_screen" onclick="cmdFullScreen();" title="Full Screen Mode?">Mode?</button>
+			<button type="button" id="cmd_toggle_log"  onclick="cmdToggleLog();"  title="Show log history?">View?</button>
+		</div>
+        
+       <!-- The log_div element shares screen space with audio-player div element.  -->
+        <div id="log_div" style="visibility: hidden"></div>
+
+		<div id="audio-player">
+		
+			<!-- 
+			
+				The clock is updated by setInterval() every second.  
+				From file js/utils.js see function below
+				
+				function setClock()
+				{
+					const clock = document.getElementById("clock");
+					if (!!clock)
+					{
+						setInterval(()=> clock.innerHTML = "JML 3D Studios: "  + new Date().toLocaleTimeString(), ONE_SECOND); 
+					}
+				}
+			
+			-->
+			<div id="clock" title="Local time"></div>
+		
+			<!-- Audio Image (album covers)-->
+			<div id="audio-image">
+				<img class="cover" alt="Album covers and or Media Art">
+				<p id="audio_title">Scroll down for Audio Player controls!</p>
+			</div>
+
+			<!-- Audio information. -->
+            <div id="audio-info">
+				<p>Artist/Band:</p><span class="artist"></span>		
+            </div>
+			
+			<div class="clearboth"></div>
+			<br>&nbsp;	
+			
+			<p style="margin-left: 3vh; font-weight: bold;">Volume:
+			
+				<!-- Volume Control, your cursor keys control volume. -->
+				<input id="audio_volume" class="slider" type="range" min="0" max="20" 
+					   title="Slide right to increase volume, left decreases!" value="3" />
+			</p>
+				   
+			<br>&nbsp;
+
+			<!-- The Audio menu container element. -->
+			<div id="audio_bar" class="menus">
+				<span>
+					<button id="prev"  type="button" title="Previous song?">&#10094;</button>
+					<button id="play"  type="button" title="Play song?">Play</button>
+					<button id="pause" type="button" title="Pause song?">Pause</button>
+					<button id="stop"  type="button" title="Stop song?">Stop</button>
+					<button id="next"  type="button" title="Next song?">&#10095;</button>
+				</span>
+			</div>
+
+            <!-- Tracker Audio View -->
+            <div id="tracker">
+				<span id="duration"></span>
+			</div>
+
+			<ul id="playlist" class="hidden" title="Click left mouse to select song?">
+				<li song="music1.mp3" cover="media.art1.jpg" artist="Judy Collins">    Amazing Grace</li>
+				<li song="music2.mp3" cover="media.art2.jpg" artist="Garth Brooks">    Mama Loved Papa</li>
+				<li song="music3.mp3" cover="media.art3.jpg" artist="Janis Joplin">    Piece of my heart</li>
+				<li song="music4.mp3" cover="media.art4.jpg" artist="Aretha Franklin"> Respect</li>
+				<li song="music5.mp3" cover="media.art5.jpg" artist="Pink Floyd">      Time</li>
+				<li song="music6.mp3" cover="media.art6.jpg" artist="Percy Sledge">    When A Man Loves A Woman</li>
+				<li song="music7.mp3" cover="media.art7.jpg" artist="Led Zeppelin">    Whole Lotta Love</li>
+				<li song="music8.mp3" cover="media.art8.jpg" artist="Led Zeppelin">    Bring It On Home</li>
+				<li song="music9.mp3" cover="media.art9.jpg" artist="Arlo Guthrie">    Comming into Los Angeles</li>
+			</ul>
+			
+		<!-- End of Audio Player element.  -->
+		</div>
+
+        <canvas id="JML_canvas" title="Scroll wheel me to zoom!"></canvas>
+
+		<!-- The parent element allows resize of the child elements width & height.  -->
+		<div id="video_container" class="resizable" style="visibility:hidden;">
+			<video id="video_element" style="visibility:hidden;" mute controls loop>
+				<source src="res/movie.mp4" type="video/mp4" /> Your browser does not support HTML5 video.
+			</video>
+		</div>
+
+		<!-- The title bar where output from the Arrow function sendMsg(msg) is displayed.  -->
+        <div id="title_bar"></div>
+        
+        <!--  The 16 background images for slideshow.  -->
+		<div id="mySlideShow" class="w3-content w3-display-container">
+			<img class="mySlides" src="img/Slides/slide1.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide2.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide3.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide4.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide5.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide6.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide7.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide8.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide9.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide10.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide11.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide12.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide13.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide14.jpg" alt="an image load error">
+			<img class="mySlides" src="img/Slides/slide15.jpg" alt="an image load error">
+		</div>
+
+
+		<!-- The script for the new Audio() Player with a Playlist. -->
+		<script src="js/audio-player.js"></script>
+		<script src="js/Icosa.js"></script>
+
+	<!-- The closing tag of the body element.  -->
+    </body>
+
+<!-- The closing tag of the html document.  -->
+</html>
+
+<!-- eof -->
